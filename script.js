@@ -1,4 +1,3 @@
-
 const acceptableValues = new Set(["r", "s", "p"]);
 const rounds = 5;
 
@@ -43,30 +42,37 @@ function getHumanChoice(){
 
 function playRound(humanChoice, computerChoice){
     if((humanChoice == "rock") && computerChoice == "paper"){
+        alert("You lose! Paper beats Rock");
         console.log("You lose! Paper beats Rock");
         return "c";
     }
     else if((humanChoice == "paper") && computerChoice == "rock"){
+        alert("You win! Paper beats Rock");
         console.log("You win! Paper beats Rock");
         return "h";
     }
     else if ((humanChoice == "scissors") && computerChoice == "rock"){
+        alert("You lose! Rock beats scissors");
         console.log("You lose! Rock beats scissors");
         return "c";
     }
     else if ((humanChoice == "rock") && computerChoice == "scissors"){
+        alert("You win! Rock beats scissors")
         console.log("You win! Rock beats scissors");
         return "h";
     }
     else if((humanChoice == "paper") && computerChoice == "scissors"){
+        alert("You lose! Scissors beats paper");
         console.log("You lose! Scissors beats paper");
         return "c";
     }
     else if((humanChoice == "scissors") && computerChoice == "paper"){
+        alert("You win! Scissors beats paper");
         console.log("You win! Scissors beats paper");
         return "h";
     }
     else{
+        alert("Draw!");
         console.log("Draw!");
     }
 }
@@ -87,6 +93,17 @@ function playGame(){
             computerScore += 1;
         }
     }
+
+    if(humanScore > computerScore){
+        alert(`You win! YOUR SCORE: ${humanScore} | CPU SCORE ${computerScore}`);
+    }
+    else if (humanScore < computerScore){
+        alert(`You lose! YOUR SCORE: ${humanScore} | CPU SCORE ${computerScore}`);
+    }
+    else{
+        alert("Draw game.");
+    }
+
 }
 
-playGame();
+document.querySelector("button").addEventListener("click", playGame);
