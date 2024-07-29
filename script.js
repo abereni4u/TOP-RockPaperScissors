@@ -1,7 +1,5 @@
 
 const acceptableValues = new Set(["r", "s", "p"]);
-
-
 const rounds = 5;
 
 function getComputerChoice(){
