@@ -1,10 +1,8 @@
 
 const acceptableValues = new Set(["r", "s", "p"]);
-let humanScore = 0;
-let computerScore = 0;
 
-const humanSelection = getHumanChoice();
-const cpuSelection = getComputerChoice();
+
+const rounds = 5;
 
 function getComputerChoice(){
     let randomValue = Math.random() * 100;
@@ -48,31 +46,49 @@ function getHumanChoice(){
 function playRound(humanChoice, computerChoice){
     if((humanChoice == "rock") && computerChoice == "paper"){
         console.log("You lose! Paper beats Rock");
-        computerScore += 1;
+        return "c";
     }
     else if((humanChoice == "paper") && computerChoice == "rock"){
         console.log("You win! Paper beats Rock");
-        humanScore += 1;
+        return "h";
     }
     else if ((humanChoice == "scissors") && computerChoice == "rock"){
         console.log("You lose! Rock beats scissors");
-        computerScore += 1;
+        return "c";
     }
     else if ((humanChoice == "rock") && computerChoice == "scissors"){
         console.log("You win! Rock beats scissors");
-        humanScore += 1;
+        return "h";
     }
     else if((humanChoice == "paper") && computerChoice == "scissors"){
         console.log("You lose! Scissors beats paper");
-        computerScore += 1;
+        return "c";
     }
     else if((humanChoice == "scissors") && computerChoice == "paper"){
         console.log("You win! Scissors beats paper");
-        humanScore += 1;
+        return "h";
     }
     else{
         console.log("Draw!");
     }
 }
 
-playRound(humanSelection, cpuSelection);
+function playGame(){
+    alert ("Time to play \"Rock, Paper, Scissors!\"");
+    let humanScore = 0;
+    let computerScore = 0;
+    for(let r = 1; r <= rounds; r++){
+        console.log(`Round ${r}!`);
+        const humanSelection = getHumanChoice();
+        const cpuSelection = getComputerChoice();
+        let result = playRound(humanSelection, cpuSelection);
+        if (result == "h"){
+            humanScore += 1;
+        }
+        else{
+            computerScore += 1;
+        }
+    }
+}
+
+playGame();
